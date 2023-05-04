@@ -187,9 +187,20 @@ def generate_pdf():
 @app.route('/studentdetails', methods=['POST', 'GET'])
 def search_student():
     query=Year.query.all()
-    # reg = request.form['roll']
-    # search=Year.query.filter_by(APPL_NO=reg).first()
+    reg = request.form['roll']
+    search=Year.query.filter_by(APPL_NO=reg).first()
     return render_template('studentdetails.html',query=query)
+
+@app.route('/studentdetails', methods=['POST', 'GET'])
+def search_student():
+    query = Year.query.all()
+    search = None
+    if request.method == 'POST':
+        reg = request.form.get('roll')
+        if reg:
+            search = Year.query.filter_by(APPL_NO=reg).first()
+    return render_template('studentdetails.html', query=query, search=search)
+
     
 # @app.route('/studentdetails', methods=['POST', 'GET'])
 # def search_student():
