@@ -1,0 +1,319 @@
+{% extends 'base.html' %} {% block title %} Student Details {% endblock title %}
+{% block body %} {% if query %}
+<p>Search results for "{{ query }}":</p>
+{% endif %} {% for post in results %}
+
+<h1>Student Details</h1>
+<form method="POST" action="{{ url_for('search_student') }}">
+  <label for="roll">Enter Roll Number:</label>
+  <input type="text" id="roll" name="roll" required />
+  <button type="submit">Search</button>
+</form>
+
+{% if search %}
+<h2>Search Results:</h2>
+<table>
+  <tr>
+    <th>Roll Number</th>
+    <th>Name</th>
+    <th>Year</th>
+  </tr>
+  <tr>
+    <td>{{ search.APPL_NO }}</td>
+    <td>{{ search.NAME }}</td>
+    <td>{{ search.YEAR }}</td>
+  </tr>
+</table>
+{% endif %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+  {{message}}
+</div>
+{% endfor %}
+<br />
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">SID</th>
+      <th scope="col">APPLICATION NUMBER</th>
+      <th scope="col">ROLL NUMBER</th>
+      <th scope="col">STUDENT NAME</th>
+      <th scope="col">GENDER</th>
+      <th scope="col">DEGREE</th>
+      <th scope="col">BRANCH</th>
+      <th scope="col">COMMUNITY</th>
+      <th scope="col">ADMISSION</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">NUMBER</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">DISTRICT</th>
+      <th scope="col">STATE</th>
+      <th scope="col">PINCODE</th>
+      <th scope="col">RELIGION</th>
+      <th scope="col">MODE</th>
+      <th scope="col">TYPE</th>
+      <th scope="col">BLOOD_GROUP</th>
+      <th scope="col">NATIONALITY</th>
+      <th scope="col">RELIGION</th>
+      <th scope="col">COMMUNITY</th>
+      <th scope="col">SUB_CASTE</th>
+      <th scope="col">PERSONAL_IDENTIFICATION</th>
+      <th scope="col">ID_TYPE</th>
+      <th scope="col">ID_NUMBER</th>
+      <th scope="col">MOTHER_LANGUAGE</th>
+      <th scope="col">OTHER_LANGUAGE</th>
+      <th scope="col">HEIGHT</th>
+      <th scope="col">WEIGHT</th>
+      <th scope="col">ANY_ALIGNMENT</th>
+      <th scope="col">ALERGIC</th>
+      <th scope="col">HOBBIES</th>
+      <th scope="col">MOBILE</th>
+      <th scope="col">E_MAIL</th>
+      <th scope="col">PMS</th>
+      <th scope="col">DA</th>
+      <th scope="col">FG</th>
+      <th scope="col">Column_10TH_REGISTER_NO</th>
+      <th scope="col">Column_10TH_MARK</th>
+      <th scope="col">Column_10TH_OVERALLPERCENTAGE</th>
+      <th scope="col">Column_12TH_REGISTER_NO</th>
+      <th scope="col">Column_12TH_MARK</th>
+      <th scope="col">Column_12TH_OVERALLPERCENTAGE</th>
+      <th scope="col">MATHS</th>
+      <th scope="col">PHYSICS</th>
+      <th scope="col">CHEMISTRY</th>
+      <th scope="col">COUNCILING_CUTOFF</th>
+      <th scope="col">COUNCELING_RANK</th>
+      <th scope="col">BOARD_OF_EXAM</th>
+      <th scope="col">SCHOOL_UNDER</th>
+      <th scope="col">SCHOOL_NAME</th>
+      <th scope="col">MEDIUM</th>
+      <th scope="col">DIPLOMA_STATUS</th>
+      <th scope="col">DIPLOMA_IN</th>
+      <th scope="col">OVERALLPERCENTAGE</th>
+      <th scope="col">COLLEGE_NAME</th>
+      <th scope="col">UG_PG_STATUS</th>
+      <th scope="col">UG_PG</th>
+      <th scope="col">OVERALLPERCENTAGE_1</th>
+      <th scope="col">COLLEGE_NAME_1</th>
+      <th scope="col">EXTRA_CURRICULAR</th>
+      <th scope="col">ACHIVEMENT</th>
+      <th scope="col">HOSTEL_REQUIREMENT</th>
+      <th scope="col">FATHER_NAME</th>
+      <th scope="col">FATHER_OCCUPATION</th>
+      <th scope="col">FATHER_MOBILE</th>
+      <th scope="col">FATHER_MAIL</th>
+      <th scope="col">MOTHER_NAME</th>
+      <th scope="col">MOTHER_OCCUPATION</th>
+      <th scope="col">MOTHER_MOBILE</th>
+      <th scope="col">MOTHER_MAIL</th>
+      <th scope="col">PERMENANT_ADDRESS_1</th>
+      <th scope="col">PERMENANT_ADDRESS_2</th>
+      <th scope="col">EDIT</th>
+      <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in query %}
+    <tr>
+      <th scope="row">{{post.SL_NO}}</th>
+      <td>{{post.APPL_NO}}</td>
+      <td>{{post.ROLL_NO}}</td>
+      <td>{{post.NAME}}</td>
+      <td>{{post.GENDER}}</td>
+      <td>{{post.DEGREE}}</td>
+      <td>{{post.BRANCH}}</td>
+      <td>{{post.TYPE}}</td>
+      <td>{{post.COMMUNITY}}</td>
+      <td>{{post.ADMISSION_DATE}}</td>
+      <td>{{post.E_MAIL}}</td>
+      <td>{{post.MOBILE}}</td>
+      <td>{{post.ADDRESS}}</td>
+      <td>{{post.DISTRICT}}</td>
+      <td>{{post.STATE}}</td>
+      <td>{{post.PINCODE}}</td>
+      <td>{{post.MODE}}</td>
+      <td>{{post.TYPE}}</td>
+      <td>{{post.BLOOD_GROUP}}</td>
+      <td>{{post.NATIONALITY}}</td>
+      <td>{{post.RELIGION}}</td>
+      <td>{{post.COMMUNITY}}</td>
+      <td>{{post.SUB_CASTE}}</td>
+      <td>{{post.PERSONAL_IDENTIFICATION}}</td>
+      <td>{{post.ID_TYPE}}</td>
+      <td>{{post.ID_NUMBER}}</td>
+      <td>{{post.MOTHER_LANGUAGE}}</td>
+      <td>{{post.OTHER_LANGUAGE}}</td>
+      <td>{{post.HEIGHT}}</td>
+      <td>{{post.WEIGHT}}</td>
+      <td>{{post.ANY_ALIGNMENT}}</td>
+      <td>{{post.ALERGIC}}</td>
+      <td>{{post.HOBBIES}}</td>
+      <td>{{post.MOBILE}}</td>
+      <td>{{post.E_MAIL}}</td>
+      <td>{{post.PMS}}</td>
+      <td>{{post.DA}}</td>
+      <td>{{post.FG}}</td>
+      <td>{{post.Column_10TH_REGISTER_NO}}</td>
+      <td>{{post.Column_10TH_MARK}}</td>
+      <td>{{post.Column_10TH_OVERALLPERCENTAGE}}</td>
+      <td>{{post.Column_12TH_REGISTER_NO}}</td>
+      <td>{{post.Column_12TH_MARK}}</td>
+      <td>{{post.Column_12TH_OVERALLPERCENTAGE}}</td>
+      <td>{{post.MATHS}}</td>
+      <td>{{post.PHYSICS}}</td>
+      <td>{{post.CHEMISTRY}}</td>
+      <td>{{post.COUNCILING_CUTOFF}}</td>
+      <td>{{post.COUNCELING_RANK}}</td>
+      <td>{{post.BOARD_OF_EXAM}}</td>
+      <td>{{post.SCHOOL_UNDER}}</td>
+      <td>{{post.SCHOOL_NAME}}</td>
+      <td>{{post.MEDIUM}}</td>
+      <td>{{post.DIPLOMA_STATUS}}</td>
+      <td>{{post.DIPLOMA_IN}}</td>
+      <td>{{post.OVERALLPERCENTAGE}}</td>
+      <td>{{post.COLLEGE_NAME}}</td>
+      <td>{{post.UG_PG_STATUS}}</td>
+      <td>{{post.UG_PG}}</td>
+      <td>{{post.OVERALLPERCENTAGE_1}}</td>
+      <td>{{post.COLLEGE_NAME_1}}</td>
+      <td>{{post.EXTRA_CURRICULAR}}</td>
+      <td>{{post.ACHIVEMENT}}</td>
+      <td>{{post.HOSTEL_REQUIREMENT}}</td>
+      <td>{{post.FATHER_NAME}}</td>
+      <td>{{post.FATHER_OCCUPATION}}</td>
+      <td>{{post.FATHER_MOBILE}}</td>
+      <td>{{post.FATHER_MAIL}}</td>
+      <td>{{post.MOTHER_NAME}}</td>
+      <td>{{post.MOTHER_OCCUPATION}}</td>
+      <td>{{post.MOTHER_MOBILE}}</td>
+      <td>{{post.MOTHER_MAIL}}</td>
+      <td>{{post.PERMENANT_ADDRESS_1}}</td>
+      <td>{{post.PERMENANT_ADDRESS_2}}</td>
+      <td>{{post.DISTRICT_1}}</td>
+      <td>{{post.STATE_1}}</td>
+      <td>{{post.PINCODE_1}}</td>
+      <td>{{post.CATEGORY}}</td>
+      <td>{{post.GURDIAN}}</td>
+      <td>{{post.MOBILE_1}}</td>
+      <td>{{post.GURD_ADDRESS_1}}</td>
+      <td>{{post.GURD_ADDRESS_2}}</td>
+      <td>{{post.DISTRICT_2}}</td>
+      <td>{{post.STATE_2}}</td>
+      <td>{{post.PINCODE_2}}</td>
+      <td>{{post.PINCODE_1}}</td>
+      <td>{{post.SIBILING_REGNO}}</td>
+      <td>{{post.RELATION_TYPE}}</td>
+      <td>{{post.ANNUAL_INCOME}}</td>
+      <td>{{post.ADMISSION_DATE_YYYY_MM_DD}}</td>
+      <td>{{post.PROGRAMME}}</td>
+      <td>{{post.CAMPCODE}}</td>
+
+      <!-- SL_NO	
+APPL_NO	
+ROLL_NO	
+NAME	
+DOB_YYYY_MM_DD	
+GENDER	
+DEGREE	
+BRANCH	
+MODE	
+TYPE	
+BLOOD_GROUP	
+NATIONALITY	
+RELIGION	
+COMMUNITY	
+SUB_CASTE	
+PERSONAL_IDENTIFICATION	
+ID_TYPE	
+ID_NUMBER	
+MOTHER_LANGUAGE	
+OTHER_LANGUAGE	
+HEIGHT	
+WEIGHT	
+ANY_ALIGNMENT	
+ALERGIC	
+HOBBIES	
+MOBILE	
+E_MAIL	
+PMS	
+DA	
+FG	
+Column_10TH_REGISTER_NO	
+Column_10TH_MARK	
+Column_10TH_OVERALLPERCENTAGE	
+Column_12TH_REGISTER_NO	
+Column_12TH_MARK	
+Column_12TH_OVERALLPERCENTAGE	
+MATHS	
+PHYSICS	
+CHEMISTRY	
+COUNCILING_CUTOFF	
+COUNCELING_RANK	
+BOARD_OF_EXAM	
+SCHOOL_UNDER	
+SCHOOL_NAME	
+MEDIUM	
+DIPLOMA_STATUS	
+DIPLOMA_IN	
+OVERALLPERCENTAGE	
+COLLEGE_NAME	
+UG_PG_STATUS	
+UG_PG	
+OVERALLPERCENTAGE_1	
+COLLEGE_NAME_1	
+EXTRA_CURRICULAR	
+ACHIVEMENT	
+HOSTEL_REQUIREMENT	
+FATHER_NAME	
+FATHER_OCCUPATION	
+FATHER_MOBILE	
+FATHER_MAIL	
+MOTHER_NAME	
+MOTHER_OCCUPATION	
+MOTHER_MOBILE	
+MOTHER_MAIL	
+PERMENANT_ADDRESS_1	
+PERMENANT_ADDRESS_2	
+DISTRICT	
+STATE	
+PINCODE	
+COMMUNICATION_ADDRESS_1	
+COMMUNICATION_ADDRESS_2	
+DISTRICT_1	
+STATE_1	
+PINCODE_1	
+CATEGORY	
+GURDIAN	
+MOBILE_1	
+GURD_ADDRESS_1	
+GURD_ADDRESS_2	
+DISTRICT_2	
+STATE_2	
+PINCODE_2	
+SIBILING_REGNO	
+RELATION_TYPE	
+ANNUAL_INCOME	
+ADMISSION_DATE_YYYY_MM_DD	
+PROGRAMME	
+CAMPCODE	 -->
+      <!-- <a href="/edit/{{post.id}}"
+          ><button class="btn btn-primary">Edit</button>
+        </a>
+      </td>
+      <td>
+        <a href="/delete/{{post.id}}"
+          ><button
+            onclick="return confirm('Are you sure to Delete data');"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </a>
+      </td> -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock body %}

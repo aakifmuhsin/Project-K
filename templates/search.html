@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% block title %}
+Search
+{% endblock title %}
+
+
+
+{% block body %}
+ <h3 class="text-center"><span>Search Your Details</span> </h3>
+  
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+
+</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+<br>
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<form action="/search" method="post">
+
+
+<div class="form-group">
+<label for="attendance">Enter Register Number</label>
+<input type="text" class="form-control" name="roll" id="roll" placeholder="register number">
+</div>
+<br>
+
+  <button type="submit" class="btn btn-danger btn-sm btn-block">Search</button>
+</form>
+<br>
+<br>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    department
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="/itdb">IT</a></li>
+    <li><a class="dropdown-item" href="/csedb">CSE</a></li>
+    <li><a class="dropdown-item" href="/ecedb">ECE</a></li>
+    <li><a class="dropdown-item" href="/mechdb">MECH</a></li>
+    <li><a class="dropdown-item" href="/civildb">CIVIL</a></li>
+    <li><a class="dropdown-item" href="eeedb">EEE</a></li>
+    <li><a class="dropdown-item" href="mbadb">MBA</a></li>
+  </ul>
+</div>
+<br><br>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    arrear
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="/zeroar">0</a></li>
+    <li><a class="dropdown-item" href="/onear">1</a></li>
+    <li><a class="dropdown-item" href="/twoar">2</a></li>
+    <li><a class="dropdown-item" href="/threear">3</a></li>
+    <li><a class="dropdown-item" href="/fourar">4</a></li>
+    <li><a class="dropdown-item" href="/fivear">5</a></li>
+    <li><a class="dropdown-item" href="/sixar">6</a></li>
+    
+  </ul>
+</div>
+<hr style="border: 5px solid black;">
+
+</div>
+
+
+<div class="col-md-8">
+{% if bio %}
+<br>
+<h3>Your Details</h3>
+ <hr>
+ <li>Roll No : {{bio.rollno}}</li>
+
+ <li>Name    : {{bio.sname}}</li>
+  <li>Sem   : {{bio.sem}}</li>
+  <li>Gender   : {{bio.gender}}</li>
+  <li>Branch  : {{bio.branch}}</li>
+  <li>Email  : {{bio.email}}</li>
+  <li>Number  : {{bio.number}}</li>
+  <li>Address  : {{bio.address}}</li>
+  <hr>
+  <h3>Attendance Status</h3>
+  <hr>
+  <li>Attendance : {{attend.attendance}}</li>
+  <hr>
+  <h3>Arrear Status</h3>
+  <hr>
+  <li>arrear : {{arr.arrear}}</li>
+<br><br>
+{% else %}
+No such results
+{% endif %}
+
+</div>
+
+<!-- start -->
+
+<table class="table">
+
+  <tbody>
+    <!-- it -->
+  {% for result in results %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+
+<!-- cse -->
+{% for result in resultCse %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+ 
+<!-- eee -->
+{% for result in resultEee %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+
+<!-- ece -->
+{% for result in resultEce %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+
+<!-- civil -->
+{% for result in resultCivil %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+
+<!-- mech -->
+{% for result in resultMech %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+
+<!-- MBA -->
+{% for result in resultMba %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+
+<!-- arrear zero -->
+{% for result in str %}
+    <tr>
+      
+      <td>{{result}}</td>
+   
+    </tr>
+{% endfor %}
+
+
+
+  </tbody>
+</table>
+
+
+
+
+<!-- end -->
+
+</div>
+
+
+
+{% endblock body %}

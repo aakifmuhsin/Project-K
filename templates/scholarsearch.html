@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %} Student Details {% endblock title %}
+{% block body %} {% if query %}
+<p>Search results for "{{ query }}":</p>
+{% endif %} {% for post in results %}
+
+<h3 class="text-center"><span>Student Details</span></h3>
+<form method="get" action="{{ url_for('search_student') }}">
+  <input type="text" name="roll" value="{{ query }}" placeholder="Search..." />
+  <button type="submit">Search</button>
+</form>
+{% endfor %} {% endif %} {% endwith %} {% if results %}
+<p>Search results:</p>
+<ul>
+  {% for student in results %}
+  <li>{{ student.NAME }} - {{ student.ROLL_NO }} - {{ student.APPL_NO }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No results found.</p>
+{% endif %} {% endfor %} {% with
+messages=get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+category, message in messages %} {% endfor %} {% endblock body %}
